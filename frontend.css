@@ -11,6 +11,7 @@ body {
 
 b.err {
    color:red;
+   background:yellow;
       animation: blink 1s steps(5, start) infinite;
       -webkit-animation: blink 1s steps(5, start) infinite;
 }

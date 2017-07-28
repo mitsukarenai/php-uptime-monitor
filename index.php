@@ -113,7 +113,7 @@ foreach($json as $address) {
 
 // write out JSON data only if any checks have been executed
 if($checkExecuted == TRUE)
-   file_put_contents($db, json_encode($json), LOCK_EX);
+   file_put_contents($db, json_encode($json,  JSON_PRETTY_PRINT), LOCK_EX);
 
 
 // DEBUG: output DB array and die
@@ -162,7 +162,7 @@ foreach($json as $check) {
 $checkOutput.='
 <tr>
    <td>
-   ['.$check->type.'] '.$check->address.'
+    <b>·'.$check->type.'·</b> '.$check->address.' : '.$check->findString.'
    </td>
    <td>
    <progress value="'.((time() - $check->lastCheck)).'" max="'.$check->checkInterval.'"></progress> <abbr title="'.$check->lastCheck.' ('.date('r', $check->lastCheck).')">'.((time() - $check->lastCheck)).'s ago</abbr>  
@@ -191,7 +191,7 @@ print <<<EOT
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>php-uptime-monitor</title>
     <link rel='stylesheet' href='{$stylefile}' type='text/css' media='screen' />
     <meta name="viewport" content="initial-scale=1.0, user-scalable=yes">
      {$refreshCookie}
@@ -226,8 +226,7 @@ Page called: {$pageCall}
                 <table>
  <thead>
   <tr>
-
-     <th>address</th>
+     <th>address + port/string</th>
 
      <th>last check</th>
      <th>last response time</th>
