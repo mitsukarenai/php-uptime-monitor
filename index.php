@@ -139,7 +139,7 @@ foreach($json as $check) {
       sendEmailAlert(
          $check->emailNotification,
          'connection failed: '.$check->address,
-         "Hello\r\nSorry to bother you, but I couldn't connect to ".$check->address.", it told me: ".$check->lastResultConnection.' with string '.$check->lastResultString,
+         "Hello, I am ".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']."\r\nSorry to bother you, but I couldn't connect to ".$check->address.", it told me: ".$check->lastResultConnection.' with string '.$check->lastResultString,
          "From: php-uptime-monitor@".$_SERVER['SERVER_NAME']."\r\n"
       );
       $lastResultConnection = '<b class="err">✖ '.$check->lastResultConnection.'</b>';
@@ -153,7 +153,7 @@ foreach($json as $check) {
       sendEmailAlert(
          $check->emailNotification,
          'text not found: '.$check->address,
-         "Hello\r\nSorry to bother you, but I couldn't find the text string \"".$check->findString."\" on page ".$check->address." :(",
+         "Hello, I am ".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']."\r\nSorry to bother you, but I couldn't find the text string \"".$check->findString."\" on page ".$check->address." :(",
          "From: php-uptime-monitor@".$_SERVER['SERVER_NAME']."\r\n"
       );
       $lastResultString = '<b class="err">✖'.'</b>';
