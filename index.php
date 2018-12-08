@@ -165,7 +165,7 @@ $checkOutput.='
     <b>·'.$check->type.'·</b> '.$check->address.' : '.$check->findString.'
    </td>
    <td>
-   <progress value="'.((time() - $check->lastCheck)).'" max="'.$check->checkInterval.'"></progress> <abbr title="'.$check->lastCheck.' ('.date('r', $check->lastCheck).')">'.((time() - $check->lastCheck)).'s ago</abbr>  
+   <progress value="'.((time() - $check->lastCheck)).'" max="'.$check->checkInterval.'"></progress> <abbr title="'.$check->lastCheck.' ('.date('r', $check->lastCheck).')">'.((time() - $check->lastCheck)).'s ago (interval: '.$check->checkInterval.'s)</abbr>  
    </td>
    <td>
    <b>'.$check->lastResultDuration.' ms</b>
@@ -267,7 +267,7 @@ EOT;
       → finding of the text string in last check  {StringOK | StringNotFound | -empty-}
 
 
-====== EXAMPLES =======
+====== EXAMPLES to put in "db.json" =======
 
 [
   {
